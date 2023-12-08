@@ -1,0 +1,33 @@
+1. minor bug - function checkList ()-> SantaList line 121 should return the status of an individual.. not set status.... only santa modifier to prevent anyone else from calling the contract
+
+solution
+Status status = s_theListCheckedOnce[person];
+(emit status)
+
+2. function to add List to status is missing.. in SantaList-- without this function no child can be sent any present....
+
+<!-- 6. Sata token should take an array of addresses  -->
+
+## critical
+
+3. any one can set the status of any adrress.. Santalist line 121... multiple addresses can be set by a single person....to multiple state... only modifier for santa should be added...
+
+<!-- 4. function collect present in santaList would always revert.. -->
+
+5. function buy present... any one can call buy present multiple times and maliciousky mint multiple nfts...
+
+6. No one should be able to buy present for another user except the user has collected their present... check if balnce of the address to be bought for is greater than one...else revert to prevent arithmetic underflow or overflow problem...
+
+7. floating numbers.....in santaToken.sol...
+
+8. it would have been better if token were minted to the Santalist address and sent to the extra nice child fromm there to be able to have a maximum suplly in circulation...
+
+9. SantaList buy token() => you cannot buy present for a child who was not extremly nice as it would cause artihmetic overflow/underflow... a revert statement should be here... and the individual initiating the transaction must have at least 2e18 ether of santa token...
+
+<!-- invariants -->
+
+1. token uri must not change
+2. santaList. addded a getter fucntion to get the number of token counter... the number gotten from here should be passed into_ownerOf() and it shoudl not return a deaad address....SantaList._ownerOf(num)
+3. at no point should any child own more than one xmax nft... how get the token counter from sata list and create a for loop that gets the owner using the formula above and retruns the address.. the address should then be passed into balance Of of SantaList and must not be greater than one....
+
+## fuzz testing bugs(stateful)
